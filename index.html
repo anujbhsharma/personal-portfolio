@@ -4,123 +4,563 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Anuj Sharma - Full Stack Developer Portfolio showcasing experience in web development, AI, and cloud technologies">
-    <meta property="og:title" content="Anuj Sharma - Full Stack Developer Portfolio">
-    <meta property="og:description" content="Experienced Full Stack Developer specialized in AI and cloud technologies">
-    <meta property="og:type" content="website">
-    <title>Anuj Sharma - Full Stack Developer Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Anuj Sharma - Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-in': 'slideIn 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .grain {
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.1"/%3E%3C/svg%3E');
+        }
+        .hover-underline {
+            position: relative;
+        }
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .hover-underline:hover::after {
+            width: 100%;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="bg-white min-h-screen">
-    <main class="min-h-screen lg:grid lg:grid-cols-12 gap-0">
-        <!-- Left Column - Photo and Contact -->
-        <div class="col-span-12 lg:col-span-3 bg-gray-50 p-8 flex flex-col justify-between border-b lg:border-r border-gray-200">
-            <!-- Photo and Name -->
-            <div>
-                <div class="mb-8">
-                    <img src="file.png" alt="Professional headshot of Anuj Sharma" class="w-full aspect-square object-cover  transition-all duration-300"/>
-                </div>
-                <h1 class="text-4xl font-bold tracking-tight mb-2">ANUJ SHARMA</h1>
-                <h2 class="text-lg uppercase tracking-widest mb-6 text-gray-600">Full Stack Developer</h2>
-                <div class="w-12 h-1 bg-black mb-6"></div>
-                <div class="space-y-2 text-sm">
-                    <a href="tel:506-897-4572" class="block hover:text-blue-600 transition-colors" aria-label="Phone number">506-897-4572</a>
-                    <a href="mailto:sharmaab982@gmail.com" class="block hover:text-blue-600 transition-colors" aria-label="Email address">sharmaab982@gmail.com</a>
-                    <p>Fredericton, NB</p>
+<body class="bg-[#0a0a0a] text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-serif font-bold">AS</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#about" class="hover-underline text-white/80 hover:text-white">About</a>
+                    <a href="#experience" class="hover-underline text-white/80 hover:text-white">Experience</a>
+                    <a href="#projects" class="hover-underline text-white/80 hover:text-white">Projects</a>
+                    <a href="#skills" class="hover-underline text-white/80 hover:text-white">Skills</a>
+                    
                 </div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Education -->
-            <div>
-                <h2 class="text-sm font-bold uppercase tracking-widest mb-4">Education</h2>
-                <div class="space-y-4 text-sm">
-                    <div>
-                        <h3 class="font-bold">University of New Brunswick</h3>
-                        <p>MSc Computer Science</p>
-                        <p class="text-gray-600">2023—2024</p>
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center pt-16 grain">
+        <div class="max-w-7xl mx-auto px-4 w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Left Content -->
+                <div class="w-full md:w-1/2 space-y-8 animate-fade-in">
+                    <div class="space-y-4">
+                        <h1 class="text-6xl md:text-7xl xl:text-8xl font-serif font-bold leading-tight">
+                            Full Stack
+                            <span class="block">Developer</span>
+                        </h1>
+                        <div class="h-1 w-24 bg-white"></div>
                     </div>
-                    <div>
-                        <h3 class="font-bold">Pandit Deendayal Energy University</h3>
-                        <p>BTech ICT</p>
-                        <p class="text-gray-600">2016—2020</p>
+                    
+                    <p class="text-white/80 text-xl leading-relaxed">
+                        Results-driven developer with 3+ years of experience in full-stack development and AI technologies. 
+                        Currently pursuing MS in Computer Science, focused on AI/ML and legal tech solutions.
+                    </p>
+
+                    <!-- Contact Info -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base">
+                        <a href="mailto:sharmaab982@gmail.com" 
+                           class="flex items-center gap-3 text-white/80 hover:text-white transition-colors group">
+                            <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>sharmaab982@gmail.com</span>
+                        </a>
+                        <a href="tel:506-897-4572" 
+                           class="flex items-center gap-3 text-white/80 hover:text-white transition-colors group">
+                            <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span>506-897-4572</span>
+                        </a>
+                        <span class="flex items-center gap-3 text-white/80">
+                            <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                            <span>Fredericton, NB</span>
+                        </span>
+                        
+                    </div>
+
+                    
+                </div>
+
+                <!-- Right Image -->
+                <div class="w-full md:w-1/2  animate-float">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl blur-3xl animate-pulse-slow"></div>
+                    <div class="relative aspect-square max-w-2xl mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
+                        <img 
+                            src="file.png" 
+                            alt="Anuj Sharma" 
+                            class="w-full h-full object-cover rounded-3xl shadow-2xl border border-white/20"
+                        />
+                        <!-- Decorative Elements -->
+                        <div class="absolute -top-4 -right-4 w-24 h-24 border border-white/20 rounded-full"></div>
+                        <div class="absolute -bottom-4 -left-4 w-32 h-32 border border-white/20 rounded-full"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Right Column - Content -->
-        <div class="col-span-12 lg:col-span-9 p-8 overflow-y-auto">
-            <!-- Key Achievements -->
-            <section class="mb-12" aria-labelledby="achievements-title">
-                <h2 id="achievements-title" class="text-4xl lg:text-5xl font-bold mb-8 tracking-tight">KEY ACHIEVEMENTS</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="border-l-4 border-black pl-4 hover:border-blue-600 transition-colors">
-                        <p class="text-3xl font-bold mb-2">40%</p>
-                        <h3 class="text-sm uppercase tracking-widest">Improved Data Retrieval</h3>
-                        <p class="text-sm text-gray-600">Legal Tech AI Platform</p>
-                    </div>
-                    <div class="border-l-4 border-black pl-4 hover:border-blue-600 transition-colors">
-                        <p class="text-3xl font-bold mb-2">60%</p>
-                        <h3 class="text-sm uppercase tracking-widest">Reduced Testing Time</h3>
-                        <p class="text-sm text-gray-600">Automation Platform</p>
-                    </div>
-                    <div class="border-l-4 border-black pl-4 hover:border-blue-600 transition-colors">
-                        <p class="text-3xl font-bold mb-2">45%</p>
-                        <h3 class="text-sm uppercase tracking-widest">API Response Time</h3>
-                        <p class="text-sm text-gray-600">AWS Query Optimization</p>
-                    </div>
-                    <div class="border-l-4 border-black pl-4 hover:border-blue-600 transition-colors">
-                        <p class="text-3xl font-bold mb-2">85%</p>
-                        <h3 class="text-sm uppercase tracking-widest">Coherence Rate</h3>
-                        <p class="text-sm text-gray-600">HollyBot AI Chatbot</p>
-                    </div>
+    <!-- Key Achievements Section -->
+    <section class="py-12 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-4 border border-white/10 backdrop-blur">
+                    <p class="text-3xl font-bold">40%</p>
+                    <p class="text-white/60">Improved Data Retrieval</p>
                 </div>
-            </section>
-
-            <!-- Experience -->
-            <section class="mb-12" aria-labelledby="experience-title">
-                <h2 id="experience-title" class="text-4xl lg:text-5xl font-bold mb-8 tracking-tight">EXPERIENCE</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-6">
-                        <h3 class="text-xl font-bold mb-2">Full Stack Developer</h3>
-                        <p class="text-sm uppercase tracking-widest mb-4">Themis Core, 2023—Present</p>
-                        <ul class="list-disc list-inside text-sm space-y-2">
-                            <li>Legal tech AI platform development</li>
-                            <li>ElasticSearch integration</li>
-                            <li>OAuth2 and JWT implementation</li>
-                        </ul>
-                    </div>
-                    <div class="lg:col-span-6">
-                        <h3 class="text-xl font-bold mb-2">Software Developer</h3>
-                        <p class="text-sm uppercase tracking-widest mb-4">Lodestone Software, 2021—2023</p>
-                        <ul class="list-disc list-inside text-sm space-y-2">
-                            <li>Automation testing platform</li>
-                            <li>AWS RDS optimization</li>
-                            <li>React component development</li>
-                        </ul>
-                    </div>
+                <div class="p-4 border border-white/10 backdrop-blur">
+                    <p class="text-3xl font-bold">60%</p>
+                    <p class="text-white/60">Search Accuracy Boost</p>
                 </div>
-            </section>
-
-            <!-- Skills -->
-            <section aria-labelledby="skills-title">
-                <h2 id="skills-title" class="text-4xl lg:text-5xl font-bold mb-8 tracking-tight">SKILLS</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-4">
-                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4">Languages</h3>
-                        <p class="text-sm">Java • Python • C++ • SQL • JavaScript • GO • TypeScript • Swift</p>
-                    </div>
-                    <div class="lg:col-span-4">
-                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4">Frameworks</h3>
-                        <p class="text-sm">React • NextJS • Angular • Spring Boot • Redux • Flask • Django • NodeJS</p>
-                    </div>
-                    <div class="lg:col-span-4">
-                        <h3 class="text-sm font-bold uppercase tracking-widest mb-4">Tools</h3>
-                        <p class="text-sm">AWS (EC2, S3, RDS) • Git • RESTful APIs • MongoDB • PostgreSQL</p>
-                    </div>
+                <div class="p-4 border border-white/10 backdrop-blur">
+                    <p class="text-3xl font-bold">45%</p>
+                    <p class="text-white/60">API Response Time</p>
                 </div>
-            </section>
+                <div class="p-4 border border-white/10 backdrop-blur">
+                    <p class="text-3xl font-bold">1K+</p>
+                    <p class="text-white/60">Concurrent Users</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 grain">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-serif font-bold mb-8 reveal-on-scroll">Experience</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Themis Core -->
+                <div class="group p-6 border border-white/10 hover:border-white/30 transition-colors reveal-on-scroll backdrop-blur">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Full Stack Developer</h3>
+                            <p class="text-white/60">Themis Core</p>
+                        </div>
+                        <span class="text-white/60">2023 - Present</span>
+                    </div>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Developed legal tech AI platform improving data retrieval by 40%</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Integrated ElasticSearch, boosting search accuracy by 60%</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Implemented OAuth2 and JWT for enhanced security</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-2 py-1 bg-white/5 text-xs">React</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Spring Boot</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Django</span>
+                    </div>
+                </div>
+
+                <!-- Lodestone Software -->
+                <div class="group p-6 border border-white/10 hover:border-white/30 transition-colors reveal-on-scroll backdrop-blur">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Software Developer</h3>
+                            <p class="text-white/60">Lodestone Software</p>
+                        </div>
+                        <span class="text-white/60">2021 - 2023</span>
+                    </div>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Built automation testing platform reducing testing time by 60%</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Optimized AWS RDS MySQL queries, improving API response time by 45%</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-white">→</span>
+                            <span>Developed reusable React components with Redux</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-2 py-1 bg-white/5 text-xs">AWS</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">React</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-serif font-bold mb-8 reveal-on-scroll">Featured Projects</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- LegalTechAI -->
+                <div class="group hover:translate-y-[-5px] transition-transform duration-300 reveal-on-scroll">
+                    <div class="border border-white/10 p-6 backdrop-blur h-full">
+                        <div class="text-2xl mb-4"><i class="fas fa-balance-scale"></i></div>
+                        <h3 class="text-xl font-bold mb-3">LegalTechAI</h3>
+                        <p class="text-white/80 mb-4">AI-powered legal analysis platform with microservices architecture.</p>
+                        <ul class="text-white/70 text-sm space-y-2 mb-4">
+                            <li>• Improved workflow efficiency by 30%</li>
+                            <li>• Reduced document processing by 50%</li>
+                            <li>• Support for 1000+ concurrent users</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/5 text-xs">Django</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">React</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">Spring Boot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HollyBot -->
+                <div class="group hover:translate-y-[-5px] transition-transform duration-300 reveal-on-scroll">
+                    <div class="border border-white/10 p-6 backdrop-blur h-full">
+                        <div class="text-2xl mb-4"><i class="fas fa-robot"></i></div>
+                        <h3 class="text-xl font-bold mb-3">HollyBot</h3>
+                        <p class="text-white/80 mb-4">Conversational AI chatbot using NLP and RNNs.</p>
+                        <ul class="text-white/70 text-sm space-y-2 mb-4">
+                            <li>• 85% response coherence rate</li>
+                            <li>• 100+ queries per second</li>
+                            <li>• 200ms average response time</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/5 text-xs">Python</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">NLP</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GasLert -->
+                <div class="group hover:translate-y-[-5px] transition-transform duration-300 reveal-on-scroll">
+                    <div class="border border-white/10 p-6 backdrop-blur h-full">
+                        <div class="text-2xl mb-4"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3 class="text-xl font-bold mb-3">GasLert</h3>
+                        <p class="text-white/80 mb-4">IoT-based gas detection system with real-time alerts.</p>
+                        <ul class="text-white/70 text-sm space-y-2 mb-4">
+                            <li>• 99.9% detection accuracy</li>
+                            <li>• 60% faster hazard response</li>
+                            <li>• 200% extended battery life</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/5 text-xs">IoT</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">C++</span>
+                            <span class="px-2 py-1 bg-white/5 text-xs">Embedded</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 grain">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-serif font-bold mb-8 reveal-on-scroll">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Languages -->
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-lg font-bold mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-white/5 text-xs">Java</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Python</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">C++</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">JavaScript</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">TypeScript</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">GO</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Swift</span>
+                    </div>
+                </div>
+
+                <!-- Frontend -->
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-lg font-bold mb-4">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-white/5 text-xs">React</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">NextJS</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Angular</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Redux</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Tailwind</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-lg font-bold mb-4">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-white/5 text-xs">Spring Boot</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Django</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Flask</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">NodeJS</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Express</span>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-lg font-bold mb-4">Tools & Cloud</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-white/5 text-xs">AWS</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Docker</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">Git</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">MongoDB</span>
+                        <span class="px-2 py-1 bg-white/5 text-xs">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-16 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-serif font-bold mb-8 reveal-on-scroll">Education</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-xl font-bold">University of New Brunswick</h3>
+                    <p class="text-white/60">Master of Science in Computer Science</p>
+                    <p class="text-white/80 mt-2">GPA: 4.0</p>
+                    <p class="text-white/60 mt-1">2023 - 2024</p>
+                </div>
+                <div class="border border-white/10 p-6 backdrop-blur reveal-on-scroll">
+                    <h3 class="text-xl font-bold">Pandit Deendayal Energy University</h3>
+                    <p class="text-white/60">BTech in Information and Communication Technology</p>
+                    <p class="text-white/80 mt-2">CGPA: 9.28/10.0</p>
+                    <p class="text-white/60 mt-1">2016 - 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <script>
+        // Intersection Observer for reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#about');
+            const limit = hero.offsetTop + hero.offsetHeight;
+            
+            if (scrolled <= limit) {
+                hero.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+            }
+        });
+
+        // Navigation background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-black');
+                nav.classList.remove('bg-black/80');
+            } else {
+                nav.classList.remove('bg-black');
+                nav.classList.add('bg-black/80');
+            }
+        });
+
+        // Text scramble effect for headings
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            
+            update() {
+                let output = '';
+                let complete = 0;
+                
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += char;
+                    } else {
+                        output += from;
+                    }
+                }
+
+                this.el.innerText = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+
+        // Apply scramble effect to section headings
+        document.querySelectorAll('h2').forEach(heading => {
+            const originalText = heading.innerText;
+            const fx = new TextScramble(heading);
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fx.setText(originalText);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(heading);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+        if (mobileMenuBtn) {
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 hidden';
+            mobileMenu.innerHTML = `
+                <div class="bg-black w-64 h-full p-6">
+                    <button class="text-white mb-6">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <nav class="space-y-4">
+                        <a href="#about" class="block text-white hover:text-white/80">About</a>
+                        <a href="#experience" class="block text-white hover:text-white/80">Experience</a>
+                        <a href="#projects" class="block text-white hover:text-white/80">Projects</a>
+                        <a href="#skills" class="block text-white hover:text-white/80">Skills</a>
+                        <a href="#contact" class="block text-white hover:text-white/80">Contact</a>
+                    </nav>
+                </div>
+            `;
+            document.body.appendChild(mobileMenu);
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            mobileMenu.querySelector('button').addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
